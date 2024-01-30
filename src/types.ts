@@ -1,3 +1,5 @@
+import { Filters, Row } from "react-table";
+
 export interface Product {
   id: number;
   title: string;
@@ -10,4 +12,10 @@ export interface Product {
   category: string;
   thumbnail?: string;
   images: string[];
+}
+
+export interface FilterProps {
+  preGlobalFilteredRows: Row<{}>[];
+  setGlobalFilter: (filterValue: string | number) => void;
+  globalFilter: any;
 }

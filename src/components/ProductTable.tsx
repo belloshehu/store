@@ -8,8 +8,18 @@ import { TableData } from "./TableData";
 import axios from "axios";
 import { Product } from "../types";
 import { FaTrash, FaPencilAlt } from "react-icons/fa";
-import { Column, HeaderGroup, Hooks, useTable, Row } from "react-table";
+import {
+  Column,
+  HeaderGroup,
+  Hooks,
+  useTable,
+  Row,
+  useSortBy,
+  useFilters,
+  useGlobalFilter,
+} from "react-table";
 import { Image } from "./Image";
+import { Filter } from "./Filter";
 
 export const ProductTable = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -77,41 +87,64 @@ export const ProductTable = () => {
       ].filter((column) => column.Header?.toString().toLowerCase() !== "images")
     );
   };
-  const { getTableProps, prepareRow, getTableBodyProps, headerGroups, rows } =
-    useTable({ columns: productColumns as Column[], data }, tableHooks);
+
+  const {
+    getTableProps,
+    prepareRow,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    state,
+    preGlobalFilteredRows,
+    setGlobalFilter,
+    globalFilter,
+  } = useTable(
+    { columns: productColumns as Column[], data },
+    useFilters,
+    useGlobalFilter,
+    tableHooks,
+    useSortBy
+  );
   return (
-    <Table {...getTableProps()}>
-      <TableHead>
-        {headerGroups.map((headerGroup) => (
-          <TableRow {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers?.map((column) => (
-              <TableHeader {...column.getHeaderProps()}>
-                {column.render("Header")}
-              </TableHeader>
-            ))}
-          </TableRow>
-        ))}
-      </TableHead>
-      <TableBody {...getTableBodyProps()}>
-        {rows.map((row, index) => {
-          prepareRow(row);
-          return (
-            <TableRow
-              className={
-                isEvenRow(index)
-                  ? " bg-slate-100"
-                  : "bg-gradient-to-r from-slate-300 to-primary text-slate-200"
-              }
-              {...row.getRowProps()}>
-              {row.cells.map((cell, index) => (
-                <TableData {...cell.getCellProps()}>
-                  {cell.render("Cell")}
-                </TableData>
+    <>
+      <Filter
+        preGlobalFilteredRows={preGlobalFilteredRows}
+        setGlobalFilter={setGlobalFilter}
+        globalFilter={globalFilter}
+      />
+      <Table {...getTableProps()}>
+        <TableHead>
+          {headerGroups.map((headerGroup) => (
+            <TableRow {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <TableHeader {...column.getHeaderProps()}>
+                  {column.render("Header")}
+                </TableHeader>
               ))}
             </TableRow>
-          );
-        })}
-      </TableBody>
-    </Table>
+          ))}
+        </TableHead>
+        <TableBody {...getTableBodyProps()}>
+          {rows.map((row, index) => {
+            prepareRow(row);
+            return (
+              <TableRow
+                className={
+                  isEvenRow(index)
+                    ? " bg-slate-100"
+                    : "bg-gradient-to-r from-slate-300 to-primary text-slate-200"
+                }
+                {...row.getRowProps()}>
+                {row.cells.map((cell, index) => (
+                  <TableData {...cell.getCellProps()}>
+                    {cell.render("Cell")}
+                  </TableData>
+                ))}
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </>
   );
 };

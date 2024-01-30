@@ -7,7 +7,14 @@ import { TableBody } from "./TableBody";
 import { TableData } from "./TableData";
 import axios from "axios";
 import { Product } from "../types";
-import { FaTrash, FaPencilAlt } from "react-icons/fa";
+import {
+  FaTrash,
+  FaPencilAlt,
+  FaChevronDown,
+  FaChevronUp,
+  FaArrowDown,
+  FaArrowUp,
+} from "react-icons/fa";
 import {
   Column,
   HeaderGroup,
@@ -117,8 +124,18 @@ export const ProductTable = () => {
           {headerGroups.map((headerGroup) => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <TableHeader {...column.getHeaderProps()}>
+                <TableHeader
+                  {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
+                  {column.isSorted ? (
+                    column.isSortedDesc ? (
+                      <FaArrowDown className="inline pl-1" />
+                    ) : (
+                      <FaArrowUp className="inline pl-1 " />
+                    )
+                  ) : (
+                    ""
+                  )}
                 </TableHeader>
               ))}
             </TableRow>

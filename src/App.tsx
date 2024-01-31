@@ -5,12 +5,15 @@ import { ProductTable } from "./components/ProductTable";
 import { Route, Routes } from "react-router-dom";
 import Product from "./pages/Product";
 import ProductDetail from "./pages/ProductDetail";
+import Container from "./components/Container";
 function App() {
   return (
-    <Routes>
-      <Route element={<Product />} path="/" />
-      <Route element={<ProductDetail />} path="/product/:id" />
-    </Routes>
+    <Container>
+      <Routes>
+        <Route element={<Product />} path="/" />
+        <Route element={<ProductDetail />} path="/product/:id" />
+      </Routes>
+    </Container>
   );
 }
 

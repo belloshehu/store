@@ -19,3 +19,25 @@ export interface FilterProps {
   setGlobalFilter: (filterValue: string | number) => void;
   globalFilter: any;
 }
+
+export interface Form {
+  actionType: "edit" | "add";
+  show: boolean;
+}
+export interface ProductFormProps {
+  setForm: (form: Form) => void;
+  product: Product;
+  products: Product[];
+  setProducts: (products: Product[]) => void;
+  actionType: "edit" | "add";
+}
+
+export interface ModalProps {
+  message: string;
+  setModal: (modal: ModalType) => void;
+}
+
+export interface ModalType {
+  message: string;
+  show: boolean;
+}

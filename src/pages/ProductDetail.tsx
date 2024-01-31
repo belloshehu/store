@@ -5,6 +5,7 @@ import axios from "axios";
 import tw from "twin.macro";
 import styled from "twin.macro";
 import { FaStar } from "react-icons/fa";
+import Loading from "../components/Loading";
 
 const url = "https://dummyjson.com/products/";
 const ProductDetail = () => {
@@ -13,18 +14,13 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const Loading = tw.h2` 
-    text-primary
-    text-center 
-    w-full
-  `;
   const Wrapper = tw.div`
     flex 
     flex-col 
     gap-10 
     items-start
 
-    p-5 md:p-10
+    p-2 md:p-10
     w-full
     min-h-screen
   `;
@@ -150,7 +146,7 @@ const ProductDetail = () => {
       }
     })();
   }, []);
-  if (loading) return <Loading>Loading ... </Loading>;
+  if (loading) return <Loading message="Loading ... " />;
   return (
     <Wrapper>
       <ImageDetailWrapper>

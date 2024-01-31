@@ -14,6 +14,7 @@ w-full
 md:w-2/5
 mx-auto 
 my-2
+text-center
 `;
 
 export const Filter = ({

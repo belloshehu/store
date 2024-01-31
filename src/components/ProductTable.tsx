@@ -7,14 +7,7 @@ import { TableBody } from "./TableBody";
 import { TableData } from "./TableData";
 import axios from "axios";
 import { Product } from "../types";
-import {
-  FaTrash,
-  FaPencilAlt,
-  FaChevronDown,
-  FaChevronUp,
-  FaArrowDown,
-  FaArrowUp,
-} from "react-icons/fa";
+import { FaTrash, FaPencilAlt, FaArrowDown, FaArrowUp } from "react-icons/fa";
 import {
   Column,
   HeaderGroup,
@@ -27,9 +20,11 @@ import {
 } from "react-table";
 import { Image } from "./Image";
 import { Filter } from "./Filter";
+import { useNavigate } from "react-router-dom";
 
 export const ProductTable = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -59,7 +54,6 @@ export const ProductTable = () => {
       getProductColumns(products, [
         "thumbnail",
         "brand",
-        "id",
         "description",
         "category",
       ]),
@@ -112,6 +106,11 @@ export const ProductTable = () => {
     tableHooks,
     useSortBy
   );
+
+  const handleClick = (productID: number) => {
+    navigate(`/product/${productID}`);
+  };
+
   return (
     <>
       <Filter
@@ -151,7 +150,10 @@ export const ProductTable = () => {
                     ? " bg-slate-100"
                     : "bg-gradient-to-r from-slate-300 to-primary text-slate-200"
                 }
-                {...row.getRowProps()}>
+                {...row.getRowProps()}
+                onClick={() => {
+                  handleClick(row.values.id);
+                }}>
                 {row.cells.map((cell, index) => (
                   <TableData {...cell.getCellProps()}>
                     {cell.render("Cell")}

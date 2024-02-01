@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# Front-end Assessment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Front-end assessment using React, Tailwindcss, Axios, Typescript and
+React-table. Styled-component was used to improve readability of the code.
 
-## Available Scripts
+## How To Run The Application
 
-In the project directory, you can run:
+Follow the following steps to run the application on your local machine:
 
-### `npm start`
+- Clone the [repository](https://github.com/belloshehu/store):
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  ```bash
+  git clone https://github.com/belloshehu/store.git
+  ```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Change to the directory of the project:
 
-### `npm test`
+  ```bash
+   cd store
+  ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- install node packages:
 
-### `npm run build`
+  ```bash
+   npm install
+  ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Run the development server:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  ```bash
+  npm start
+  # or
+  yarn start
+  ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Open [http://localhost:3000](http://localhost:3000) with your browser to see
+  the result.
 
-### `npm run eject`
+## Running Test
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Run the test by typing the following command in the termial
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm test
+# or
+yarn test
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Possible improvement
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+One noticeable improvement is to add pagination using the react-tabe
+usePagination hook. This will not only improve performance by loading certain
+amount of product at a time, but it will also increase users' experience.

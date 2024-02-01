@@ -51,3 +51,7 @@ yarn test
 One noticeable improvement is to add pagination using the react-tabe
 usePagination hook. This will not only improve performance by loading certain
 amount of product at a time, but it will also increase users' experience.
+
+Another possible improvement is to add few similar products on a product's
+detail page. This help customers/users to easily check other related products
+without having to navigate back to the product list on the table.

@@ -1,5 +1,7 @@
+import React from "react";
 import tw from "twin.macro";
-export const Backdrop = tw.div` 
+
+const StyledBackdrop = tw.div` 
     backdrop-blur-sm
     backdrop-brightness-50  
     w-full
@@ -12,3 +14,9 @@ export const Backdrop = tw.div`
     items-center
     overflow-y-auto
 `;
+
+export const BackDrop = ({
+  children,
+}: Readonly<{ children: React.ReactNode }>) => {
+  return <StyledBackdrop>{children}</StyledBackdrop>;
+};

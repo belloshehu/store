@@ -2,7 +2,7 @@ import React from "react";
 import tw from "twin.macro";
 import { LiaTimesSolid } from "react-icons/lia";
 import { ModalProps, ModalType } from "../types";
-import { Backdrop } from "./BackDrop";
+import { BackDrop } from "./BackDrop";
 
 const StyledModal = tw.div`  
     w-full
@@ -35,7 +35,7 @@ const CloseTimes = tw(LiaTimesSolid)`
 
 const Modal = ({ message, setModal }: ModalProps) => {
   return (
-    <Backdrop>
+    <BackDrop>
       <StyledModal>
         <CloseTimes
           onClick={() => {
@@ -44,7 +44,7 @@ const Modal = ({ message, setModal }: ModalProps) => {
         />
         <ModalText>{message}</ModalText>
       </StyledModal>
-    </Backdrop>
+    </BackDrop>
   );
 };
 

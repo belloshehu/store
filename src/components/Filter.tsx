@@ -4,17 +4,17 @@ import tw from "twin.macro";
 import { FilterProps } from "../types";
 
 const StyledFilter = tw.input`
-p-3 
-rounded-full
-border-primary 
-focus:border-2
-border-[1px]
-outline-none
-w-full
-md:w-2/5
-mx-auto 
-my-2
-text-center
+   p-3 
+   rounded-full
+   border-primary 
+   focus:border-2
+   border-[1px]
+   outline-none
+   w-full
+   md:w-2/5
+   mx-auto 
+   my-2
+   text-center
 `;
 
 export const Filter = ({

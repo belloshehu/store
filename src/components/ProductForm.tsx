@@ -1,11 +1,11 @@
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import tw from "twin.macro";
 import { LiaTimesSolid } from "react-icons/lia";
 import { ProductFormProps } from "../types";
-import { Backdrop } from "./BackDrop";
+import { BackDrop } from "./BackDrop";
 
 const CloseTimes = tw(LiaTimesSolid)` 
     text-red-500 
@@ -16,6 +16,7 @@ const CloseTimes = tw(LiaTimesSolid)`
     top-5 
     right-5
 `;
+
 const FieldErrorMessage = tw.small` 
     text-red-500 
     text-left
@@ -100,7 +101,7 @@ const ProductForm = ({
   });
 
   return (
-    <Backdrop>
+    <BackDrop>
       <FormWrapper>
         <CloseTimes
           onClick={() => {
@@ -282,7 +283,7 @@ const ProductForm = ({
           </Form>
         </Formik>
       </FormWrapper>
-    </Backdrop>
+    </BackDrop>
   );
 };
 

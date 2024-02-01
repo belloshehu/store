@@ -1,10 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
-import Table from "./Table";
-import { TableHead } from "./TableHead";
-import { TableRow } from "./TableRow";
-import { TableHeader } from "./TableHeader";
-import { TableBody } from "./TableBody";
-import { TableData } from "./TableData";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { ModalType, Product } from "../types";
 import { FaTrash, FaPencilAlt, FaArrowDown, FaArrowUp } from "react-icons/fa";
@@ -20,11 +14,53 @@ import {
 import { Image } from "./Image";
 import { Filter } from "./Filter";
 import { useNavigate } from "react-router-dom";
-import { ProductTableWrapper } from "./ProductTableWrapper";
 import ProductForm from "./ProductForm";
 import Modal from "./Modal";
 import tw from "twin.macro";
 import Loading from "./Loading";
+
+const TableHeader = tw.th`
+   p-1 
+   md:p-4
+   bg-black
+   text-white
+   capitalize
+   text-sm 
+   md:text-xl
+`;
+
+const TableRow = tw.tr`
+  hover:scale-[101%]
+  duration-100
+  transition-all
+  border-4
+`;
+
+const TableHead = tw.thead`
+   p-2 
+   md:p-4
+`;
+
+const TableBody = tw.tbody`
+   border
+   border-collapse
+`;
+
+const Table = tw.table`
+   p-2
+   border-2
+   w-full
+   text-left
+`;
+
+const ProductTableWrapper = tw.div`  
+    flex 
+    flex-col 
+    gap-5 
+    md:gap-10
+    items-center
+    w-full
+`;
 
 const DeleteButton = tw(FaTrash)`  
     text-sm 
@@ -52,10 +88,17 @@ const NoProductWrapper = tw.div`
    m-auto 
    p-5
 `;
+
 const NoProductText = tw.h1` 
    text-xl 
    text-red-500 
    text-center
+`;
+
+const TableData = tw.td`
+p-1 md:p-4 
+table-cell
+underline
 `;
 
 export const ProductTable = () => {
@@ -139,7 +182,7 @@ export const ProductTable = () => {
           id: "image",
           Header: "Image",
           Cell: ({ row }: { row: Row }) => {
-            return <Image src={row.values.images[0]} alt={row.values.title} />;
+            return <Image url={row.values.images[0]} alt={row.values.title} />;
           },
         },
         {
@@ -248,7 +291,6 @@ export const ProductTable = () => {
           setGlobalFilter={setGlobalFilter}
           globalFilter={globalFilter}
         />
-        {/* <Button onClick={handleAddProduct}>Add product</Button> */}
 
         <Table {...getTableProps()}>
           <TableHead>

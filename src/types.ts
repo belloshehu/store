@@ -41,3 +41,8 @@ export interface ModalType {
   message: string;
   show: boolean;
 }
+
+export interface ImageProp {
+  url: string;
+  alt: string;
+}
